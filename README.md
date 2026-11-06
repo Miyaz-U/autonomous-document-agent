@@ -4,7 +4,7 @@ An AI agent built with Python and FastAPI. Send a plain-English request to `POST
 and it plans its own task list, writes every section, reviews its own work, and returns a
 professionally formatted Word (.docx) document.
 
-**Live demo:** https://YOUR-SERVICE.onrender.com/docs
+**Live demo:** https://autonomous-document-agent-7ujn.onrender.com/
 (Hosted on a free tier: the first request after a quiet period takes about a minute to wake up,
 and each document takes about a minute to generate.)
 
