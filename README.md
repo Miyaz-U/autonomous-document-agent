@@ -1,12 +1,14 @@
 # Autonomous Document Agent
 
-An AI agent built with Python and FastAPI. Send a plain-English request to `POST /agent`
-and it plans its own task list, writes every section, reviews its own work, and returns a
+An AI agent built with Python and FastAPI. Describe a business document in plain English and it
+plans its own task list, writes every section, reviews its own work, and returns a
 professionally formatted Word (.docx) document.
 
 **Live demo:** https://autonomous-document-agent-7ujn.onrender.com/
-(Hosted on a free tier: the first request after a quiet period takes about a minute to wake up,
-and each document takes about a minute to generate.)
+(API docs: https://autonomous-document-agent-7ujn.onrender.com/docs)
+
+> Hosted on a free tier: the first request after a quiet period takes about a minute to wake up,
+> and each document takes about a minute to generate. The demo is limited to a few documents per hour.
 
 ## How it works
 
@@ -20,6 +22,7 @@ and each document takes about a minute to generate.)
 ## Tech stack
 
 FastAPI, Pydantic, Groq (open-source GPT-OSS 120B), python-docx
+Frontend: plain HTML, CSS and JavaScript, served by FastAPI from `app/static/`
 
 ## Run locally
 
