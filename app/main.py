@@ -3,7 +3,8 @@ import re
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.config import OUTPUT_DIR
 from app.document import DocumentError, build_document
@@ -28,6 +29,9 @@ app = FastAPI(
     ),
 )
 
+STATIC_DIR = Path(__file__).parent / "static"
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
 DOCX_MEDIA_TYPE = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 SAFE_FILENAME = re.compile(r"^[A-Za-z0-9_\-]+\.docx$")
 
@@ -40,9 +44,11 @@ async def unhandled_exception_handler(request: Request, exc: Exception):
         content={"status": "failed", "message": "Internal server error."},
     )
 
+INDEX_FILE = STATIC_DIR / "index.html"
+
 @app.get("/", include_in_schema=False)
 def root():
-    return RedirectResponse(url="/docs")
+    return FileResponse(INDEX_FILE, media_type="text/html")
 
 
 @app.get("/health")

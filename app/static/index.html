@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autonomous Document Agent</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>Autonomous Document Agent</h1>
+    <p class="sub">
+      Describe the business document you need. The agent plans its own task list, writes each
+      section, reviews its work, and gives you a Word file to download.
+    </p>
+
+    <form id="form" class="card">
+      <label for="request">What document do you need?</label>
+      <textarea id="request" maxlength="2000"
+        placeholder="e.g. Create a project plan for building a mobile banking app over 6 months"></textarea>
+      <div class="row">
+        <span class="count" id="count">0 / 2000</span>
+        <button class="primary" id="submit" type="submit">Generate document</button>
+      </div>
+      <div class="examples">
+        <span>Try an example:</span>
+        <div id="chips"></div>
+      </div>
+    </form>
+
+    <div id="loading" class="card loading" aria-live="polite">
+      <div class="spinner"></div>
+      <p><strong>The agent is planning, writing and reviewing your document.</strong></p>
+      <p class="muted" id="loadingNote">This usually takes about a minute.</p>
+      <p class="muted" id="elapsed">0s</p>
+    </div>
+
+    <div id="results" aria-live="polite"></div>
+
+    <footer>
+      Free demo: limited to a few documents per hour.
+      <a href="/docs">API docs</a> ·
+      <a href="https://github.com/YOUR-USERNAME/autonomous-document-agent" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
